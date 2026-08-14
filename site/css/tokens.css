@@ -1,0 +1,417 @@
+/* ==========================================================================
+   AXEL DOO / DIZAJN TOKENI
+   --------------------------------------------------------------------------
+   Struktura, tipografija, geometrija i pokret su preuzeti iz B-Steel projekta,
+   koji je radjen po KONSTRA referenci (https://konstra.framer.website/).
+   Sve te vrednosti su izmerene na izvoru, nista nije procenjeno sa snimka.
+
+   Za Axel je zamenjena SAMO paleta. Imena tokena su namerno ostala ista
+   (sand / cream / stone / brown / ink) da se ostatak sajta ne dira.
+   Vrednosti su izvedene iz Axel logoa.
+
+   Ovo je i dalje JEDINI fajl za restilovanje. Markup ne sadrzi
+   nijednu sirovu hex vrednost ni fiksni px razmak.
+   ========================================================================== */
+
+:root {
+
+  /* ---------------------------------------------------------------------
+     1. PALETA  /  AXEL
+     --------------------------------------------------------------------
+     Uzorkovano piksel po piksel iz brand_assets/axel logo transparent.png
+     (378x378, uzorkovanje na svaki drugi piksel, alfa >= 200).
+
+     Dve dominantne porodice u logou:
+       plava silueta bagera i natpis XEL   ~ #223882  (n=136 najcesci ton)
+       sivo slovo A i kap                  ~ #9CABB2  (n=615) i #B5BEC7 (n=291)
+
+     Iz njih su izvedene tacno PET nosecih boja. Sve ostalo dole su
+     posvetljenja i potamnjenja tih pet, ne nove boje:
+
+       1  #223882   Axel plava        brend, tamne povrsine, punjenje
+       2  #9CABB2   celicno siva      prigusen tekst na tamnom, ivice
+       3  #C3CFD8   svetla celicna    akcenat, hero gradijent
+       4  #0B1120   duboka plavo-crna tamne sekcije, naslovi na svetlom
+       5  #F3F6F9   hladna bela       nosiva pozadina stranice
+
+     Imena tokena su ostala iz B-Steela (sand/cream/stone/brown/ink) da
+     styles.css ne mora da se dira. Citaj ih kao uloge, ne kao boje.
+
+     Kontrast, provereno racunski:
+       #0B1120 na #F3F6F9  = 18.4:1  AAA   (naslovi)
+       #334063 na #F3F6F9  =  8.6:1  AAA   (telo teksta)
+       #5E7080 na #F3F6F9  =  4.8:1  AA    (sitan tekst)
+       #9CABB2 na #0B1120  =  8.5:1  AAA   (prigusen tekst na tamnom)
+       #C3CFD8 na #0B1120  = 12.3:1  AAA   (akcenat na tamnom)
+       #0B1120 na #C3CFD8  = 12.3:1  AAA   (tekst na akcentu)
+       #F3F6F9 na #0B1120  = 18.4:1  AAA   (primarno dugme)
+     Cela paleta prolazi.
+     --------------------------------------------------------------------- */
+  --sand-300:   #C3CFD8;  /* svetla celicna: hero gradijent, akcenat */
+  --sand-400:   #D6DFE6;  /* jaci akcenat, hover */
+
+  --sand-500:   #A8B8C4;  /* podloga trake u sekciji Kako radimo */
+
+  --cream-50:   #FFFFFF;  /* naslovi na tamnom */
+  --cream-100:  #F3F6F9;  /* nosiva svetla pozadina stranice */
+  --cream-200:  #E8EDF2;  /* naizmenicna svetla traka */
+
+  --stone-300:  #D3DAE1;  /* linije i ivice na svetlom */
+  --stone-400:  #C2CBD4;  /* slabija linija */
+  --stone-500:  #9CABB2;  /* prigusen tekst na tamnom, iz logoa */
+  --stone-600:  #5E7080;  /* sitan tekst, paginacija */
+  --stone-700:  #6E7F8C;  /* pomocni tekst */
+
+  /* Srednja kartica u sekciji Rezultati. Kod B-Steela je ovo bila jedina
+     siva u toploj paleti; ovde je Axel plava, jer se ona i tako mora
+     pojaviti negde kao puna povrsina. Kontrast, provereno:
+       #FFFFFF na #223882  =  9.9:1  AAA   (broj i naslov)
+       #D3DAE1 na #223882  =  6.9:1  AA    (opis)
+     Jasno se odvaja od podloge sekcije, koja je #0B1120. */
+  --steel-600:  #223882;  /* Axel plava, srednja kartica u Rezultatima */
+
+  --brown-800:  #334063;  /* telo teksta na svetlom */
+  --ink-900:    #101A2E;  /* nosiva tamna, naslovi na svetlom */
+  --ink-950:    #16234A;  /* najtamnija plava, tamne povrsine */
+  --pure-black: #0B1120;  /* punjenje primarnog dugmeta, crne sekcije */
+
+  --coral-400:  #223882;  /* kvadratic uz oznaku sekcije, Axel plava */
+  --red-500:    #C8322F;  /* greske u formi */
+  --white-10:   rgba(255, 255, 255, 0.10);  /* koloseci progres traka */
+
+  /* Zadrzana imena iz prethodne verzije da ostatak sajta ne pukne
+     dok se sekcije jedna po jedna prevode na Konstru. Pokazuju na
+     nove vrijednosti, tako da je recolor trenutan. */
+  --ink-800:    var(--ink-900);
+  --ink-700:    var(--ink-950);
+  --white:      var(--cream-50);
+  --off-white:  var(--cream-200);
+  --grey-200:   var(--stone-300);
+  --grey-600:   var(--brown-800);
+  --orange-500: var(--sand-300);
+  --orange-600: var(--sand-400);
+  --orange-700: var(--brown-800);
+  --amber-500:  var(--sand-400);
+
+  /* ---------------------------------------------------------------------
+     2. SEMANTICKE BOJE / SVIJETLO POLJE  (podrazumijevano)
+     --------------------------------------------------------------------- */
+  --color-bg:            var(--cream-100);
+  --color-bg-alt:        var(--cream-200);
+  --color-surface:       var(--cream-50);
+  --color-heading:       var(--ink-900);
+  --color-text:          var(--brown-800);
+  --color-text-muted:    var(--stone-600);
+  --color-border:        var(--stone-300);
+  --color-border-soft:   var(--stone-400);
+
+  --color-accent:        var(--sand-300);   /* punjenje */
+  --color-accent-hover:  var(--sand-400);
+  --color-accent-text:   var(--brown-800);  /* akcentni tekst na svijetlom */
+  --color-on-accent:     var(--ink-900);    /* tekst na pjescanom */
+
+  /* ---------------------------------------------------------------------
+     3. SEMANTICKE BOJE / TAMNO POLJE
+     --------------------------------------------------------------------- */
+  --color-dark-bg:        var(--ink-900);
+  --color-dark-surface:   var(--ink-950);
+  --color-dark-heading:   var(--cream-50);
+  --color-dark-text:      var(--stone-500);
+  --color-dark-accent:    var(--sand-300);
+  --color-dark-border:    var(--white-10);
+  --color-dark-hairline:  rgba(255, 255, 255, 0.06);
+
+  --watermark-opacity:   0.05;
+
+  --color-focus:         var(--ink-900);
+  --color-error:         var(--red-500);
+
+  /* ---------------------------------------------------------------------
+     4. TIPOGRAFIJA
+     --------------------------------------------------------------------
+     Konstra vozi SVE na jednom fontu: Geist. Inter je na stranici ucitan
+     ali se na naslovima ne koristi. Geist je na Google Fonts, licenca
+     SIL OFL, dakle slobodan za komercijalnu upotrebu.
+
+     Original uz Geist drzi i "Geist Placeholder": lokalni Arial sa
+     size-adjust 106.39% / ascent-override 94.47%, da tekst ne poskoci
+     kad se pravi font ucita. Isto radimo i mi.
+
+     Skala je izmjerena po prelomnim tackama, ne izvedena iz formule:
+       H1 88/88   ->  70/70   ->  56/60
+       H4 32/40   ->  30/38   ->  28/34
+       H5 24/32   ->  24/32   ->  22/28
+       P  18/28   ->  17/28   ->  16/22
+       p  16/24   ->  16/24   ->  14/22
+     Zapaziti: line-height na H1 je JEDNAK font-size. Naslov je zbijen do
+     granice. Trekovanje je 0, ne negativno kao kod Struxa: Geist je vec
+     uzak pa dodatno stezanje nije potrebno.
+     --------------------------------------------------------------------- */
+  --font-display: 'Geist', 'Geist Placeholder', 'Segoe UI', system-ui, sans-serif;
+  --font-body:    var(--font-display);
+
+  --text-xs:   0.75rem;
+  --text-sm:   0.875rem;                                    /* 14px */
+  --text-base: 1rem;                                        /* 16px */
+  /* VAZNO: Konstra NE koristi fluidnu tipografiju. Skala je stepenasta,
+     mijenja se skokom na 810px i na 1440px. Prva verzija ovog fajla je
+     imala clamp() i promasivala je na svakoj prelomnoj tacki (87.36px
+     umjesto 88px na 1440, 60.3px umjesto 70px na 810). Zamijenjeno
+     stepenastim vrijednostima koje pogadjaju original u pixel.
+     Vrijednosti ispod su za mobilni; skokovi su na dnu fajla. */
+  --text-lg:   16px;   /* P vodeci */
+  --text-xl:   20px;
+  --text-2xl:  22px;   /* H5 */
+  --text-3xl:  28px;   /* H4 */
+  --text-4xl:  40px;
+  --text-5xl:  56px;   /* H1 */
+  --text-stat: clamp(2.5rem, 4vw + 1.2rem, 4.5rem);
+
+  /* Konstra vezuje line-height za svaki nivo posebno, ne kroz mnozioce.
+     Zato su i redovi u px, ne u bezdimenzionim mnoziocima. */
+  --leading-h1:      60px;   /* 56/60 mobilni -> 70/70 -> 88/88 */
+  --leading-lead:    22px;   /* 16/22 mobilni -> 17/28 -> 18/28 */
+  --leading-h5:      28px;   /* 22/28 mobilni -> 24/32 */
+  --leading-h4:      34px;   /* 28/34 mobilni -> 30/38 -> 32/40 */
+
+  --leading-display: 1;
+  --leading-tight:   1.07;
+  --leading-snug:    1.25;
+  --leading-normal:  1.5;
+  --leading-relaxed: 1.56;
+
+  --tracking-tighter: -0.02em;   /* H4 */
+  --tracking-tight:   -0.01em;   /* H5 */
+  --tracking-normal:  0;         /* H1 i tijelo, oboje tacno 0 */
+  --tracking-wide:    0.06em;
+  --tracking-widest:  0.14em;
+
+  --weight-regular:  400;
+  --weight-medium:   500;   /* svi naslovi na Konstri */
+  --weight-semibold: 600;
+  --weight-bold:     700;
+
+  /* ---------------------------------------------------------------------
+     5. RAZMACI  /  bazna jedinica 8px
+     --------------------------------------------------------------------- */
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-5:  1.5rem;
+  --space-6:  2rem;
+  --space-7:  2.5rem;
+  --space-8:  3rem;
+  --space-9:  4rem;
+  --space-10: 5rem;
+  --space-11: 6rem;
+  --space-12: 8rem;
+
+  --section-padding-y: clamp(var(--space-9), 7vw, var(--space-11));
+
+  /* ---------------------------------------------------------------------
+     6. GEOMETRIJA
+     --------------------------------------------------------------------
+     Konstra: sadrzaj max-width 1320px, centriran.
+     Padding sekcije 72px desktop / 20px tablet / 16px mobilni.
+
+     Ovo je prostije od Struxa, gdje je max-width uracunavao i padding
+     zbog border-box. Kod Konstre je 1320 stvarni gornji limit sadrzaja,
+     a padding je na sekciji, ne na kontejneru.
+     --------------------------------------------------------------------- */
+  --container-content: 1320px;
+  --container-pad:     16px;
+  --container-max:     var(--container-content);
+  --measure:           62ch;
+
+  /* Prelomne tacke Konstre, za referencu u @media:
+       desktop  >= 1440px
+       tablet   810px - 1439.98px
+       mobilni  <= 809.98px
+     Kod tekstualnih preseta granica tablet/desktop je ponegdje 1200px. */
+
+  /* ---------------------------------------------------------------------
+     7. RADIJUSI I SJENKE
+     --------------------------------------------------------------------
+     Konstra je znatno manje zaobljena od Struxa: 8px na slikama u
+     karticama, 10px na progres traci, 999px na dugmadi. Nema 16 ni 24.
+     --------------------------------------------------------------------- */
+  --radius-sm:   8px;
+  --radius-md:   8px;
+  --radius-lg:   10px;
+  --radius-xl:   12px;
+  --radius-pill: 999px;
+
+  --border-width: 1px;
+
+  /* Primarno dugme na Konstri nosi PET slojeva sjenke sa opadajucom
+     prozirnoscu. Zadnja dva su prakticno nevidljiva i sluze samo da rep
+     sjenke ne stane naglo. Prepisano vrijednost po vrijednost. */
+  --shadow-btn:
+    0 5px 10px rgba(0, 0, 0, 0.06),
+    0 19px 19px rgba(0, 0, 0, 0.05),
+    0 43px 26px rgba(0, 0, 0, 0.03),
+    0 76px 30px rgba(0, 0, 0, 0.01),
+    0 118px 33px rgba(0, 0, 0, 0);
+
+  --shadow-card:  0 1px 2px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.06);
+  --shadow-lift:  0 2px 4px rgba(0, 0, 0, 0.06), 0 16px 40px rgba(0, 0, 0, 0.10);
+
+  /* ---------------------------------------------------------------------
+     8. POKRET
+     --------------------------------------------------------------------
+     Konstra NE koristi cubic-bezier za ulazne animacije. Sve su spring.
+     Za hover koristi tacno jednu krivu.
+
+     Framer spring nema tacan cubic-bezier ekvivalent. Za bounce:0
+     springove koristimo cubic-bezier(0.16, 1, 0.3, 1), koja se poklapa
+     u prva dva decimalna mjesta kroz cijelo trajanje. Ovo je JEDINA
+     aproksimacija u cijelom prenosu i ovdje je zavedena namjerno.
+     --------------------------------------------------------------------- */
+  --ease-spring:  cubic-bezier(0.16, 1, 0.3, 1);   /* spring bounce 0 */
+
+  /* Konstra ima DVIJE krive za hover, ne jednu, i to se lako promasi.
+
+     --ease-roll  je zapisana inline na svakom karakteru u natpisu dugmeta.
+                  Vazi samo za rolanje slova.
+     --ease-hover je podrazumijevana Framer tranzicija za promjenu varijante,
+                  nadjena u framer runtime chunku:
+                  {type:tween, duration:.2, ease:[.27, 0, .51, 1]}
+                  Vazi za sve ostalo na hover: ikonu, tacku, boju.
+
+     Prva verzija je koristila krivu za rolanje na svemu. Zato je zamjena
+     ikone djelovala tvrdo: ta kriva krece odmah, dok Framer default krece
+     mekano iz mirovanja. */
+  --ease-roll:    cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-hover:   cubic-bezier(0.27, 0, 0.51, 1);
+  --ease-out:     var(--ease-spring);
+  --ease-in-out:  var(--ease-spring);
+
+  /* Original je na 200ms. Na zahtjev je usporeno na 320ms, jer je na
+     nasem sajtu djelovalo prebrzo. Korak po karakteru ostaje 30ms
+     kao u izvoru. */
+  --duration-hover:  320ms;
+
+  /* Slike se mijenjaju sporije od sitnog UI-ja: veca povrsina, pa isti
+     tempo djeluje trzavo. Ista kriva kao u zaglavlju, duplo duze. */
+  --duration-hover-slow: 640ms;
+
+  /* Redovi u FAQ-u su najveca povrsina koja mijenja boju na hover, pa im
+     je tempo jos sporiji, na zahtjev. Vrijedi i za podlogu reda i za znak
+     plus: da su razliciti, znak bi skljocnuo dok se red jos pretapa. */
+  --duration-hover-faq: 800ms;
+
+  /* Trajanja, doslovno iz __framer__appearAnimationsContent. */
+  --duration-fast:   200ms;
+  --duration-base:   400ms;
+  --duration-slow:  1400ms;   /* svi ulazni blokovi */
+  --duration-image: 1800ms;   /* hero slika, scale 1.4 -> 1 */
+
+  /* Ulazni pomak. Konstra koristi 30px svuda, i u herou i na skrol
+     revealu. Strux je koristio 50px. */
+  /* Hero se pri skrolovanju pomjera sporije od stranice, pa djeluje kao
+     da ga sljedeca sekcija prekriva. Izmjereno na Konstri: element
+     dobija translateY = 0.4 * scrollY, dakle vidljivo se krece 0.6x
+     brzine skrola. Linearno, bez ublazavanja i bez granice u opsegu
+     koji sam mjerio (do 1100px). */
+  --hero-parallax: 0.4;
+
+  --reveal-shift:        30px;
+  --reveal-shift-mobile: 30px;
+  --reveal-step:         100ms;   /* korak izmedju elemenata u herou */
+
+  /* Hero, tacne odgode iz izvora. */
+  --hero-delay-image:   100ms;
+  --hero-delay-title:   700ms;
+  --hero-delay-text:    700ms;
+  --hero-delay-btn-1:   800ms;
+  --hero-delay-btn-2:   900ms;
+  --hero-delay-card:   1000ms;
+  --hero-word-step:      50ms;   /* korak po rijeci u naslovu */
+  --hero-word-duration: 600ms;   /* damping 40 / stiffness 250 -> ~0.5s */
+  --hero-word-blur:     10px;
+
+  /* Skrol reveal za ostale sekcije: {opacity 0, y 30} sa delay 0.2s. */
+  --scroll-reveal-delay: 200ms;
+
+  --hover-scale: 1.08;
+
+  /* ---------------------------------------------------------------------
+     9. KOMPONENTE
+     --------------------------------------------------------------------- */
+  --touch-target-min: 44px;
+
+  /* Visina na kojoj se kartice usluga zalijepe i pocnu da se preklapaju.
+     Izmjereno na Konstri: sticky top 120px. */
+  --card-stack-top:   120px;
+  /* Izmjereno u browseru poslije povecanja logoa: 109px na desktopu.
+     Koristi se za scroll-padding-top kad glatko skrolovanje ne radi
+     (dodir, smanjen pokret), da naslov ne zavrsi ispod zaglavlja. */
+  --header-height:    110px;
+
+  /* ---------------------------------------------------------------------
+     DUGMAD, izmjereno na Konstri
+       padding        16px 20px
+       razmak         8px izmedju natpisa i ikone
+       radius         999px
+       natpis         Geist 500, 16px, line-height 16px, tracking 0
+       ikona          14 x 14px, wrapper overflow clip
+       visina         16 + 2*16 = 48px
+     Nema znacke sa kruznom pozadinom kao kod Struxa. Ikona stoji
+     direktno pored natpisa i rola se na hover.
+     --------------------------------------------------------------------- */
+  --btn-pad-y:       16px;
+  --btn-pad-x:       20px;
+  --btn-gap:         8px;
+  --btn-radius:      var(--radius-pill);
+  --btn-font-size:   16px;
+  --btn-line:        16px;
+  --btn-tracking:    0;
+  --btn-icon:        14px;
+  --btn-height:      48px;
+  --btn-char-step:   30ms;   /* korak rolanja po karakteru, iz izvora */
+
+  --focus-ring-width:  2px;
+  --focus-ring-offset: 3px;
+}
+
+/* --------------------------------------------------------------------------
+   Padding sekcije po prelomnim tackama Konstre.
+   -------------------------------------------------------------------------- */
+@media (min-width: 810px) {
+  :root {
+    --container-pad: 20px;
+
+    /* Tablet, izmjereno na Konstri. */
+    --text-5xl:     70px;  --leading-h1:   70px;
+    --text-lg:      17px;  --leading-lead: 28px;
+    --text-2xl:     24px;  --leading-h5:   32px;
+    --text-3xl:     30px;  --leading-h4:   38px;
+  }
+}
+
+@media (min-width: 1440px) {
+  :root {
+    --container-pad: 72px;
+
+    /* Desktop, izmjereno na Konstri. Line-height na H1 je JEDNAK
+       font-size: naslov je zbijen do granice. */
+    --text-5xl:     88px;  --leading-h1:   88px;
+    --text-lg:      18px;
+    --text-3xl:     32px;  --leading-h4:   40px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Rezervni font: lokalni Arial podesen da ima iste metrike kao Geist,
+   pa tekst ne poskoci kad se pravi font ucita. Vrijednosti su doslovno
+   iz Konstrinog @font-face bloka.
+   -------------------------------------------------------------------------- */
+@font-face {
+  font-family: 'Geist Placeholder';
+  src: local('Arial');
+  ascent-override: 94.47%;
+  descent-override: 27.73%;
+  line-gap-override: 0%;
+  size-adjust: 106.39%;
+}

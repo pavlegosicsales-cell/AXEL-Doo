@@ -10,7 +10,7 @@
 - **Ton komunikacije:** Direktan, radnički, bez marketinškog kićenja; pokazuje rad kroz gradilišne snimke, ne kroz priču
 - **Primarno tržište:** Investitori, glavni izvođači radova (gradnja stambenih/poslovnih objekata), privatni naručioci koji pripremaju placeve za gradnju
 
-> **Napomena o pouzdanosti:** Profil je sastavljen iz javnih Instagram objava (@axeldoo_) i tipične strukture niških firmi za zemljane radove. Polja označena `observed` su direktno viđena na profilu. Polja `inferred` su logična pretpostavka iz konteksta koju treba **POTVRDITI sa vlasnikom** pre nego što se stave na sajt kao tvrdnja. Polja `unknown` fale i moraju se pribaviti od klijenta (cene, tačan vozni park, godina osnivanja, kontakt, broj završenih projekata).
+
 
 ---
 
@@ -165,3 +165,5 @@ Nije javno dostupno. Kod ovog tipa radova cena je po projektu (obim iskopa, m³,
 - [ ] Kontakt telefon i email za sajt
 - [ ] Model cene (ako žele da bude na sajtu)
 - [ ] Da li imaju licence / sertifikate za rušenje većih objekata
+
+**Ako za nesto nisi siguran, improvizuj** Ovo je probna pocetna strana, pravim je da bi vlasnici videli dizajn, nije problem ako su neke nepotvrdjene informacije na sajtu

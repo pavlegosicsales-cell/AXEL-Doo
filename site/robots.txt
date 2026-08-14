@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+# Sitemap se dodaje kad sajt dobije pravi domen.
