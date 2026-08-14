@@ -1,0 +1,23 @@
+# Secrets & credentials
+.env
+credentials.json
+token.json
+
+# Disposable processing files
+.tmp/
+
+# Vendored third-party skill (own git repo, cloned separately)
+skills/ui-ux-pro-max-skill/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Node
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
