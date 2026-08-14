@@ -20,7 +20,10 @@ New-Item -ItemType Directory -Force -Path $dst | Out-Null
 
 # izvor -> izlaz, sirina, visina, kvalitet
 $jobs = @(
-  @{ i="axel uredjenje (3).jpg"; o="hero-bager-teren.jpg";        w=2000; h=1334; q=86 },
+  # Hero. Izvornik je 8192x5462 (odnos 1.4998), cilj 1.4993, pa se secenjem
+  # gubi svega nekoliko piksela. Kvalitet je visi nego kod ostalih jer hero
+  # ide preko celog ekrana i na 1920 se svaki artefakt vidi.
+  @{ i="axel hero.jpg";          o="hero-bager-teren.jpg";        w=2400; h=1600; q=86 },
   @{ i="axel iskop (4).jpg";     o="rad-01-iskop-temelja.jpg";    w=1400; h=1050; q=79 },
   @{ i="axel rusenje.jpg";       o="rad-02-rusenje-objekta.jpg";  w=1400; h=1050; q=79 },
   @{ i="axel uredjenje (2).jpg"; o="rad-03-utovar-materijala.jpg";w=1400; h=1050; q=79 },

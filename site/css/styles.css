@@ -1408,22 +1408,27 @@ a.contact-item__value:hover { color: var(--orange-500); }
 
 /* KADRIRANJE, ovo je namjerno i racunato.
    --------------------------------------------------------------------------
-   Fotografija: 4857x3239. Ljevi radnik pocinje na 41% visine kadra, a sve
-   iznad toga je cisto nebo bez ijednog detalja.
+   Fotografija: 8192x5462, priprema na 2400x1600. Telo bagera pocinje na
+   22.5% visine kadra (vrh krana), kabina je na oko 55%, gusenice se
+   zavrsavaju na 78%. Sve iznad 22.5% je cisto nebo.
 
-   Sa obicnim cover kadriranjem i visinom 100%, radnik padne na 42% visine
-   heroja, dakle tacno iza vodeceg teksta. Zato je slika visoka 150% heroja
-   i zakacena za vrh: time se ista tacka kadra spusti na 61% visine heroja,
-   ispod dugmadi, a gornji dio heroja ostane cisto nebo.
+   Sa obicnim cover kadriranjem i visinom 100%, kabina bi pala na 55%
+   visine heroja, dakle tacno iza dugmadi. Zato je slika visoka 150%
+   heroja i zakacena za vrh: time se ista tacka kadra spusti na 82.5%
+   visine heroja, duboko ispod dugmadi, a gornji dio heroja ostane nebo.
 
    Racun po ekranu (dugmad se zavrsavaju na oko 56% visine):
-     1920x1080  slika 1620px  ->  radnik na 663px, dugmad na 601px
-     1440x900   slika 1350px  ->  radnik na 552px, dugmad na 499px
+     1920x1080  slika 1620px  ->  kabina na 891px, dugmad na 605px
+     1440x900   slika 1350px  ->  kabina na 743px, dugmad na 504px
    Uvijek ispod, na svakoj visini ekrana, jer su obje mjere procenti
    iste visine.
 
-   Donja trecina fotografije, gdje je skela najgusca, ispada iz kadra.
-   To je dobro: ostaje nebo, radnik i gornji dio konstrukcije. */
+   Vrh krana pada na 33.7% visine heroja, gdje je gradijent jos na oko 35%
+   neprovidnosti, pa se nazire a ne smeta. Stoji desno, a vodeci tekst je
+   lijevo, tako da se ne preklapaju.
+
+   Donja trecina fotografije, gdje je trava najsvjetlija od sunca, ispada
+   iz kadra. To je dobro: ostaje nebo, masina i prasina. */
 .hero__image img {
   display: block;
   width: 100%;
@@ -1465,33 +1470,38 @@ a.contact-item__value:hover { color: var(--orange-500); }
    B-Steelu, samo za Axelovu fotografiju.
 
    Postupak: gradijent postaje providan na 46% visine heroja, a slika stoji
-   na 150% visine i zakacena je za vrh, pa ta tacka pada na 31% visine same
-   fotografije. Nebo je tamo uzorkovano na pet mesta po sirini:
-     #4C8DE7  #448ADF  #4289DB  #4385D3  #4886D1
-   Srednja vrednost #4589DC ima ton 213 stepeni, zasicenje 0.69,
-   svetlinu 0.86.
+   na 150% visine i zakacena je za vrh, pa ta tacka pada na 30.7% visine
+   same fotografije. Nebo je tamo uzorkovano na cetiri mesta po sirini
+   (peti uzorak je preskocen, tamo je krak bagera):
+     #FBFBFB  #F5F6F8  #EFF2F7  #E9EEF2   ->  sredina #F2F4F7
 
-   Da se na prelazu ne vidi traka, gornja boja mora imati ISTI ton a vecu
-   svetlinu. Ton 213 na S 0.42 / V 0.93 daje #8AB6ED. Menja se samo
-   svetlina, ton je nepromenjen, i prelaz nestane.
+   VAZNO, ovde je obrnuto nego kod B-Steela. Njihovo nebo je bilo tamnije
+   od gornje boje, pa je gornja morala biti SVETLIJA. Ovde sunce stoji dole
+   levo, pa nebo ide od tamnijeg na vrhu kadra ka skoro belom na prelazu:
+     y = 2%     #D8E2EB
+     y = 21%    #EBF0F4
+     y = 30.7%  #F2F4F7
+   Gradijent zato prati taj isti smer. Gornja boja je #E2EAF2: isti ton
+   (216 stepeni) kao izmereno nebo, malo svetlija od stvarnog vrha kadra,
+   pa je vrh heroja cistiji a prelaz se i dalje ne vidi kao traka.
 
-   Cetvrto zaustavljanje na 34% je medjuvrednost, da se ramp ne lomi na
-   sredini.
+   Zaustavljanja na 21% i 34% nisu interpolacija nego izmerene vrednosti
+   fotografije na tim visinama, pa se ramp ne lomi na sredini.
 
-   Kontrast ostaje visok: #101A2E na #8AB6ED = 7.6:1, #334063 = 4.6:1.
+   Kontrast je visok: #101A2E na #E2EAF2 = 14.1:1, #334063 = 7.9:1.
 
    Brend akcenat --sand-300 se NE dira: ovo je boja samo za hero nebo. */
 .hero__overlay {
-  --hero-sky: #8AB6ED;
+  --hero-sky: #E2EAF2;
 
   position: absolute;
   inset: 0;
   background: linear-gradient(
     180deg,
     var(--hero-sky)              0%,
-    rgba(138, 182, 237, 0.72)   21%,
-    rgba(101, 155, 225, 0.34)   34%,
-    rgba(69, 137, 220, 0)       46%
+    rgba(226, 234, 242, 0.72)   21%,
+    rgba(236, 240, 245, 0.34)   34%,
+    rgba(242, 244, 247, 0)      46%
   );
 }
 
@@ -1507,9 +1517,9 @@ a.contact-item__value:hover { color: var(--orange-500); }
     background: linear-gradient(
       180deg,
       var(--hero-sky)              0%,
-      rgba(138, 182, 237, 0.88)   38%,
-      rgba(101, 155, 225, 0.45)   58%,
-      rgba(69, 137, 220, 0)       72%
+      rgba(226, 234, 242, 0.88)   38%,
+      rgba(236, 240, 245, 0.45)   58%,
+      rgba(242, 244, 247, 0)      72%
     );
   }
 }
